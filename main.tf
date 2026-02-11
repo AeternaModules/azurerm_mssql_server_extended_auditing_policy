@@ -1,5 +1,5 @@
-resource "azurerm_mssql_server_extended_auditing_policy" "mssql_server_extended_auditing_policys" {
-  for_each = var.mssql_server_extended_auditing_policys
+resource "azurerm_mssql_server_extended_auditing_policy" "mssql_server_extended_auditing_policies" {
+  for_each = var.mssql_server_extended_auditing_policies
 
   server_id                               = each.value.server_id
   audit_actions_and_groups                = each.value.audit_actions_and_groups

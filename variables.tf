@@ -1,6 +1,6 @@
-variable "mssql_server_extended_auditing_policys" {
+variable "mssql_server_extended_auditing_policies" {
   description = <<EOT
-Map of mssql_server_extended_auditing_policys, attributes below
+Map of mssql_server_extended_auditing_policies, attributes below
 Required:
     - server_id
 Optional:
@@ -18,12 +18,12 @@ EOT
   type = map(object({
     server_id                               = string
     audit_actions_and_groups                = optional(list(string))
-    enabled                                 = optional(bool, true)
-    log_monitoring_enabled                  = optional(bool, true)
+    enabled                                 = optional(bool) # Default: true
+    log_monitoring_enabled                  = optional(bool) # Default: true
     predicate_expression                    = optional(string)
-    retention_in_days                       = optional(number, 0)
+    retention_in_days                       = optional(number) # Default: 0
     storage_account_access_key              = optional(string)
-    storage_account_access_key_is_secondary = optional(bool, false)
+    storage_account_access_key_is_secondary = optional(bool) # Default: false
     storage_account_subscription_id         = optional(string)
     storage_endpoint                        = optional(string)
   }))
