@@ -10,22 +10,30 @@ Optional:
     - predicate_expression
     - retention_in_days
     - storage_account_access_key
+    - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+    - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
     - storage_account_access_key_is_secondary
     - storage_account_subscription_id
+    - storage_account_subscription_id_key_vault_id (alternative to storage_account_subscription_id - read from Key Vault instead)
+    - storage_account_subscription_id_key_vault_secret_name (alternative to storage_account_subscription_id - read from Key Vault instead)
     - storage_endpoint
 EOT
 
   type = map(object({
-    server_id                               = string
-    audit_actions_and_groups                = optional(list(string))
-    enabled                                 = optional(bool) # Default: true
-    log_monitoring_enabled                  = optional(bool) # Default: true
-    predicate_expression                    = optional(string)
-    retention_in_days                       = optional(number) # Default: 0
-    storage_account_access_key              = optional(string)
-    storage_account_access_key_is_secondary = optional(bool) # Default: false
-    storage_account_subscription_id         = optional(string)
-    storage_endpoint                        = optional(string)
+    server_id                                             = string
+    audit_actions_and_groups                              = optional(list(string))
+    enabled                                               = optional(bool) # Default: true
+    log_monitoring_enabled                                = optional(bool) # Default: true
+    predicate_expression                                  = optional(string)
+    retention_in_days                                     = optional(number) # Default: 0
+    storage_account_access_key                            = optional(string)
+    storage_account_access_key_key_vault_id               = optional(string)
+    storage_account_access_key_key_vault_secret_name      = optional(string)
+    storage_account_access_key_is_secondary               = optional(bool) # Default: false
+    storage_account_subscription_id                       = optional(string)
+    storage_account_subscription_id_key_vault_id          = optional(string)
+    storage_account_subscription_id_key_vault_secret_name = optional(string)
+    storage_endpoint                                      = optional(string)
   }))
   validation {
     condition = alltrue([
