@@ -5,6 +5,7 @@ Required:
     - server_id
 Optional:
     - audit_actions_and_groups
+    - blob_storage_endpoint
     - enabled
     - log_monitoring_enabled
     - predicate_expression
@@ -16,12 +17,12 @@ Optional:
     - storage_account_subscription_id
     - storage_account_subscription_id_key_vault_id (alternative to storage_account_subscription_id - read from Key Vault instead)
     - storage_account_subscription_id_key_vault_secret_name (alternative to storage_account_subscription_id - read from Key Vault instead)
-    - storage_endpoint
 EOT
 
   type = map(object({
     server_id                                             = string
     audit_actions_and_groups                              = optional(list(string))
+    blob_storage_endpoint                                 = optional(string)
     enabled                                               = optional(bool)
     log_monitoring_enabled                                = optional(bool)
     predicate_expression                                  = optional(string)
@@ -33,7 +34,6 @@ EOT
     storage_account_subscription_id                       = optional(string)
     storage_account_subscription_id_key_vault_id          = optional(string)
     storage_account_subscription_id_key_vault_secret_name = optional(string)
-    storage_endpoint                                      = optional(string)
   }))
   validation {
     condition = alltrue([
